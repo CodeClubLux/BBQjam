@@ -9,7 +9,7 @@ def main():
 	random.seed()
 	pygame.init()
 	pygame.display.set_caption('minimal program')
-	
+
 	clock = pygame.time.Clock()
 
 	# Set up screen
