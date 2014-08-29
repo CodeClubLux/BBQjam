@@ -3,6 +3,7 @@
 
 import os, random
 import pygame
+from pygame.locals import *
 
 def main():
 	random.seed()
@@ -68,13 +69,13 @@ def main():
 		pygame.display.flip()
 
 		for event in pygame.event.get():
-			if event.type == pygame.MOUSEBUTTONDOWN:
+			if event.type == MOUSEBUTTONDOWN:
 				print('Mouse down!')
 				mousex, mousey = pygame.mouse.get_pos()
 				if pycard.left < mousex and pycard.right > mousex and pycard.top < mousey and pycard.bottom > mousey:
 					screen.fill((255,0,0))
 					pygame.display.flip()
-					print('Eureka!')
+					print('We\'ve been hit, captain!')
 			if event.type == pygame.QUIT:
 				running = False
 
