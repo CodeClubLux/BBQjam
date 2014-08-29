@@ -54,15 +54,21 @@ def main():
 
 		# For our epileptic friends ;)
 		#background = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
-		screen.fill(bg)
+		background = (0,0,0)
+		screen.fill(background)
+		if hit:
+			counter += 1
+			screen.blit(text, (screen_width/3, screen_height/2))
 
+		if counter > 20:
+			counter = 0
+			hit = False
 
 		# Move the captain!
 		if pycard.right > screen_width or pycard.left < 0:
 			step_x = -step_x
 		if pycard.bottom > screen_height or pycard.top < 0:
 			step_y = -step_y
-
 		pycard.x += step_x
 		pycard.y += step_y
 
