@@ -20,10 +20,7 @@ brew install --HEAD smpeg
 ```
 
 
-##Linux (with >= libstdc++6-4.9)
-
-In order to get this working, you will need to patch the pygame files (or maybe find a more up2date branch?)
-See http://linux-problem-solver.blogspot.com/2013/03/solution-warning-iso-c90-forbids-mixed.html
+##Linux 
 
 ```bash
 sudo apt-get install mercurial
