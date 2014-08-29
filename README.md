@@ -20,7 +20,7 @@ brew install --HEAD smpeg
 ```
 
 
-##Linux
+##Linux (with >= libstdc++6-4.9)
 ```
 sudo apt-get install mercurial
 hg clone https://bitbucket.org/pygame/pygamecd pygame
@@ -28,6 +28,7 @@ sudo apt-get install python3-dev python3-numpy libsdl-dev libsdl-image1.2-dev li
 python3 setup.py build
 sudo python3 setup.py install
 ```
+
 
 ##Windows
 
