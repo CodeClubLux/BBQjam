@@ -75,4 +75,4 @@ OR a standalone py-dev version called LiClipse (Beta as of August 2014)
 
 * http://www.sublimetext.com
 * http://www.barebones.com/products/textwrangler/ (*OSX*)
-
+* http://www.jetbrains.com/pycharm/
