@@ -52,7 +52,7 @@ def main():
 		#background = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 		background = (0,0,0)
 		screen.fill(background)
-		
+
 		# Move the captain!
 		if pycard.right > screen_width or pycard.left < 0:
 			step_x = -step_x
