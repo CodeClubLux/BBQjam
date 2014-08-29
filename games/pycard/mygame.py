@@ -11,6 +11,8 @@ def main():
 	pygame.display.set_caption('minimal program')
 
 	clock = pygame.time.Clock()
+	font = pygame.font.Font(None, 32)
+	text = font.render('Captain, we\'ve been hit!', 0, (255,255,255))
 
 	# Set up screen
 	screen_width = 800
@@ -19,7 +21,7 @@ def main():
 	screen.fill((100,100,0))
 
 	# Set up an image
-	image = pygame.image.load(os.path.join('img','image.png'))
+	image = pygame.image.load(os.path.join('img','image.png')).convert_alpha()
 	image = pygame.transform.scale(image, (200, 200))
 
 	#image.set_colorkey((255,255,255))	# set a color to be transparent
@@ -43,6 +45,8 @@ def main():
 	step_x = 10
 	step_y = 10
 
+	counter = 0
+	hit = False
 	running = True
 	while running:
 		# Limit to 50 fps
@@ -52,6 +56,14 @@ def main():
 		#background = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 		background = (0,0,0)
 		screen.fill(background)
+		
+		if hit:
+			counter += 1
+			screen.blit(text, (screen_width/3, screen_height/2))
+
+		if counter > 20:
+			counter = 0
+			hit = False
 		
 		# Move the captain!
 		if pycard.right > screen_width or pycard.left < 0:
@@ -74,6 +86,7 @@ def main():
 				mousex, mousey = pygame.mouse.get_pos()
 				if pycard.left < mousex and pycard.right > mousex and pycard.top < mousey and pycard.bottom > mousey:
 					screen.fill((255,0,0))
+					hit = True
 					pygame.display.flip()
 					print('We\'ve been hit, captain!')
 			if event.type == pygame.QUIT:
