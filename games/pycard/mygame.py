@@ -12,18 +12,18 @@ def main():
 
 	clock = pygame.time.Clock()
 	font = pygame.font.Font(None, 32)
-	text = font.render('Captain, we\'ve been hit!', 0, (255,255,255))
+	text = font.render('WTF, is this shit? We\'ve been hit!', 0, (255,255,255))
 
 	# Set up screen
 	screen_width = 800
 	screen_height = 600
 	screen = pygame.display.set_mode((screen_width,screen_height))
-	screen.fill((100,100,0))
+	bg = (0,0,0)
+	screen.fill(bg)
 
 	# Set up an image
 	image = pygame.image.load(os.path.join('img','image.png')).convert_alpha()
 	image = pygame.transform.scale(image, (200, 200))
-
 	#image.set_colorkey((255,255,255))	# set a color to be transparent
 	#image.set_alpha(128)			# Set image opacity
 
@@ -76,7 +76,15 @@ def main():
 		#image = pygame.transform.rotate(image, random.randint(0,10))
 
 		screen.blit(image, pycard)
-		pygame.display.flip()
+
+		if hit:
+			counter += 1
+			screen.blit(text, (screen_width/3, screen_height/2))
+
+		if counter > 20:
+			counter = 0
+			hit = False
+		
 
 		for event in pygame.event.get():
 			if event.type == MOUSEBUTTONDOWN:
@@ -85,10 +93,12 @@ def main():
 				if pycard.left < mousex and pycard.right > mousex and pycard.top < mousey and pycard.bottom > mousey:
 					screen.fill((255,0,0))
 					hit = True
-					pygame.display.flip()
+					pygame.draw.line(screen, (0,0,255), (400,600), (pycard.centerx, pycard.centery), 2)	
 					print('We\'ve been hit, captain!')
 			if event.type == pygame.QUIT:
 				running = False
+
+		pygame.display.flip()
 
 if __name__ == '__main__':
 	main()
